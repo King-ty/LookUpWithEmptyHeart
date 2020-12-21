@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %} 我的博客 {% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block page_header %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+
+<div id="fh5co-main">
+
+	<div class="fh5co-narrow-content">
+		<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">Read {{username}}'s Blog</h2>
+		{% if isowner %}
+		<div class="row">
+			<div class="col-md-3 col-md-offset-10 animate-box" data-animate-effect="fadeInLeft">
+				<p><a href="{{url_for('myblog.myblogedit')}}" class="btn btn-primary">写新博客>>></a></p>
+			</div>
+		</div>
+		{% endif %}
+		<div class="row row-bottom-padded-md">
+			{% for single_bloginfo in blogs %}
+			<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+				<div class="blog-entry">
+					{% if single_bloginfo.img1 %}
+					<a href="/myblog/{{single_bloginfo.user_id}}/{{single_bloginfo.id}}" class="blog-img">
+						<img src="{{url_for('static',filename=single_bloginfo.img1)}}" class="img-responsive"/>
+					</a>
+					{%else%}
+					{%if usercenterinfo.header %}
+					<a href="/myblog/{{single_bloginfo.user_id}}/{{single_bloginfo.id}}" class="blog-img">
+						<img src="{{url_for('static',filename= usercenterinfo.header)}}" class="img-responsive" >
+					</a>
+					{%else%}
+					<a href="/myblog/{{single_bloginfo.user_id}}/{single_bloginfo.id}}" class="blog-img">
+						<img src="{{url_for('static',filename='images/blogimg_start.jpg')}}"class="img-responsive"/>
+					</a>
+					{% endif %}
+					{% endif %}
+					<div class="desc">
+						<h3>
+							<a href="/myblog/{{single_bloginfo.user_id}}/{{single_bloginfo.id}}">{{single_bloginfo.head}}</a>
+						</h3>
+						<span><small>BY: {{ username }} </small> </span>
+						<span><small> 发表时间: {{single_bloginfo.time}} </small></span>
+						<span><small> 获赞数: {{single_bloginfo.likenum}} </small></span>
+
+						<a href="/myblog/{{single_bloginfo.user_id}}/{{single_bloginfo.id}}" class="lead"> Read More <i
+								class="icon-arrow-right3"></i></a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="fh5co-narrow-content">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+				<p><a href="{{url_for('mycenter_app.mycenter', user=username)}}" class="btn btn-primary">返回个人中心</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

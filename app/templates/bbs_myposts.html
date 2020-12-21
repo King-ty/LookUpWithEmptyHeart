@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %} 所有帖子 {% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block page_header %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<div id="fh5co-main">
+    <div class="fh5co-narrow-content">
+        <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">我的帖子</h2>
+        <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">
+            <a class="btn login-button btn-primary" href="{{url_for('bbs.bbs_allposts')}}">所有帖子</a>
+            <a class="btn login-button btn-primary" href="{{url_for('bbs.bbs_addpost')}}">我要发帖</a>
+        </h2>
+        {% if posts %}
+        <div class="row row-bottom-padded-md">
+            {% for post in posts %}
+            <div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+                <div class="blog-entry">
+                    
+                    <!-- <a href="#" class="blog-img"><img src="images/img-1.jpg" class="img-responsive"></a> -->
+                    <div class="desc">
+                        <h3><a href="{{url_for('bbs.bbs_singlepost',post_id=post.post_id)}}">{{ post.head }}</a></h3>
+                        <span><small><a href="{{url_for('mycenter_app.mycenter',user=post.username)}}">{{post.username}}</a> </small> / <small>{{ post.time.strftime("%Y-%m-%d %H:%M:%S") }} </small> / <small> <i class="icon-comment"></i> 热度：100</small></span>
+                        <p>{{ post.body[0:150] }}……</p>
+                        <a href="{{url_for('bbs.bbs_singlepost',post_id=post.post_id)}}" class="lead">Read More <i class="icon-arrow-right3"></i></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div>
+            <small data-animate-effect="fadeInLeft">已经到底了，下面什么也没有了嗷...</small>						 
+        </div>
+    </div>
+</div>
+{% endblock %}

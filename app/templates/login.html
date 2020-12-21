@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %} 登录 {% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block page_header %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<div id="fh5co-main">
+    <div class="fh5co-narrow-content">
+        <div class="row">
+            <div class="col-md-10 animate-box" data-animate-effect="fadeInMiddle">
+                <h1 class="fh5co-heading-colored"><a id="login">Sign In</a></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 animate-box" data-animate-effect="fadeInMiddle">
+                <div class="row">
+                    <div class="col-md-10 ">
+                        <form method="post">
+                            <fieldset class="p-8">
+                                {{form.csrf_token}}
+                                <div class="form-group">
+                                    {{form.useraccount.label}}
+                                    {{form.useraccount}}
+                                </div>
+                                <div class="form-group">
+                                    {{form.password.label}}
+                                    {{form.password}}
+                                </div>
+                                <div class="loggedin-forgot">
+                                    
+                                    {{form.remember_me}}
+                                    {{form.remember_me.label}}
+                                    <br>
+                                </div>
+                                <div class="form-group">
+                                    {{form.submit}}
+                                </div>
+                                <!-- <a class="mt-3 d-block  text-primary text-right" href="{#{url_for('account.index#signup', action='password_reset', page='check')}#}">忘记密码?</a> -->
+                                <p class="mt-3 d-block text-left">没有账号?
+                                <a class="mt-3 d-block text-primary text-right" href="{{url_for('account.register')}}">现在注册</a>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

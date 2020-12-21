@@ -1,0 +1,382 @@
+{% extends 'base.html' %}
+
+{% block title %} 待办事项 {% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block page_header %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<div id="fh5co-main">
+	<div class="fh5co-narrow-content">
+		<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">todolist</h2>
+
+		<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+
+			<div class="dropdown">
+				<button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+					sort
+				</button>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="#">开始日期</a>
+					<a class="dropdown-item" href="#">已完成</a>
+				</div>
+				</button>
+				<a class="btn btn-primary btn-demo popup-vimeo" href="add">
+					+ add
+				</a>
+				<button type="button" class="btn btn-primary" href="#">
+					delete
+				</button>
+			</div>
+			<br>
+			<div id="num">
+				{{num}} records
+			</div>
+			<br>
+			<table class="table table-striped table-bordered table-hover" id="field_list_table">
+				<thead id="gridThead">
+					<tr style="cursor: pointer;">
+						<td class="listHeadCell">开始时间</td>
+						<td class="listHeadCell">标题</td>
+						<td class="listHeadCell"></td>
+					</tr>
+				</thead>
+				<tbody id="gridtbody">
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+			<br><br>
+		</div>
+		<script>
+			$(function () {
+				// 刚开始的时候给每个tr一个序号，用于初始化,由于都是后台脚本通过模版引擎遍历输出，此处不多点缀。
+				var len = parseInt($("#num").text());// $('#field_list_table tr').length;
+				for (var i = 1; i <= len; i++) {
+					if (i == 1) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[1].year}}/{{list[1].month}}/{{list[1].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[1].title}}');
+					}
+					else if (i == 2) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[2].year}}/{{list[2].month}}/{{list[2].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[2].title}}');
+					}
+					else if (i == 3) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[3].year}}/{{list[3].month}}/{{list[3].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[3].title}}');
+					}
+					else if (i == 4) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[4].year}}/{{list[4].month}}/{{list[4].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[4].title}}');
+					}
+					else if (i == 5) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[5].year}}/{{list[5].month}}/{{list[5].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[5].title}}');
+					}
+					else if (i == 6) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[6].year}}/{{list[6].month}}/{{list[6].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[6].title}}');
+					}
+					else if (i == 7) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[7].year}}/{{list[7].month}}/{{list[7].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[7].title}}');
+					}
+					else if (i == 8) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[8].year}}/{{list[8].month}}/{{list[8].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[8].title}}');
+					}
+					else if (i == 9) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[9].year}}/{{list[9].month}}/{{list[9].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[9].title}}');
+					}
+					else if (i == 10) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[10].year}}/{{list[10].month}}/{{list[10].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[10].title}}');
+					}
+					else if (i == 11) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[11].year}}/{{list[11].month}}/{{list[11].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[11].title}}');
+					}
+					else if (i == 12) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[12].year}}/{{list[12].month}}/{{list[12].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[12].title}}');
+					}
+					else if (i == 13) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[13].year}}/{{list[13].month}}/{{list[13].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[13].title}}');
+					}
+					else if (i == 14) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[14].year}}/{{list[14].month}}/{{list[14].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[14].title}}');
+					}
+					else if (i == 15) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[15].year}}/{{list[15].month}}/{{list[15].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[15].title}}');
+					}
+					else if (i == 16) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[16].year}}/{{list[16].month}}/{{list[16].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[16].title}}');
+					}
+					else if (i == 17) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[17].year}}/{{list[17].month}}/{{list[17].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[17].title}}');
+					}
+					else if (i == 18) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[18].year}}/{{list[18].month}}/{{list[18].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[18].title}}');
+					}
+					else if (i == 19) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[19].year}}/{{list[19].month}}/{{list[19].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[19].title}}');
+					}
+					else if (i == 20) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[20].year}}/{{list[20].month}}/{{list[20].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[1].title}}');
+					}
+					else if (i == 21) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[21].year}}/{{list[21].month}}/{{list[21].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[21].title}}');
+					}
+					else if (i == 22) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[22].year}}/{{list[22].month}}/{{list[22].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[22].title}}');
+					}
+					else if (i == 23) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[23].year}}/{{list[23].month}}/{{list[23].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[23].title}}');
+					}
+					else if (i == 24) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[24].year}}/{{list[24].month}}/{{list[24].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[24].title}}');
+					}
+					else if (i == 25) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[25].year}}/{{list[25].month}}/{{list[25].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[25].title}}');
+					}
+					else if (i == 26) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[26].year}}/{{list[26].month}}/{{list[26].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[26].title}}');
+					}
+					else if (i == 27) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[1].year}}/{{list[1].month}}/{{list[1].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[1].title}}');
+					}
+					else if (i == 28) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[27].year}}/{{list[27].month}}/{{list[27].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[27].title}}');
+					}
+					else if (i == 29) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[28].year}}/{{list[28].month}}/{{list[28].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[28].title}}');
+					}
+					else if (i == 30) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[29].year}}/{{list[29].month}}/{{list[29].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[29].title}}');
+					}
+					else if (i == 31) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[30].year}}/{{list[30].month}}/{{list[30].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[30].title}}');
+					}
+					else if (i == 32) {
+						$('#field_list_table tr:eq(' + i + ') td:first').html("{{list[31].year}}/{{list[31].month}}/{{list[31].day}}");
+						$('#field_list_table tr:eq(' + i + ') td:nth-child(2)').html('{{list[31].title}}');
+					}
+					$('#field_list_table tr:eq(' + i + ') td:nth-child(3)').html("<form method='post'><input type='checkbox' id='cbtest'"+"  "+"/></form>");
+				}
+				//拖拽排序
+				$("#gridtbody").dragsort({
+					itemSelector: "tr",
+					dragSelector: "tr",
+					dragBetween: false,
+					//dragEnd: saveOrder1(),//拖拽完成后调用方法
+					placeHolderTemplate: "<tr><td></td></tr>"
+				});
+			});
+		</script>
+
+
+
+
+
+
+	</div>
+</div>
+<!-- jQuery -->
+<script src="../static/js/jquery.min.js"></script>
+<!-- jQuery Easing -->
+<script src="../static/js/jquery.easing.1.3.js"></script>
+<!-- Bootstrap -->
+<script src="../static/js/bootstrap.min.js"></script>
+<!-- Waypoints -->
+<script src="../static/js/jquery.waypoints.min.js"></script>
+<!-- Flexslider -->
+<script src="../static/js/jquery.flexslider-min.js"></script>
+<!-- MAIN JS -->
+<script src="../static/js/main.js"></script>
+<!-- Added -->
+<script src="../static/js/jquery.dragsort.js"></script>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %} 好友列表 {% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block page_header %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<div id="fh5co-main">
+<div class="fh5co-narrow-content">
+	<a class="center btn btn-primary btn-learn" href="#FrienfList">好友列表</a>
+	<a class="btn btn-primary btn-learn" href="#Recommendation">可能想认识的人</a>
+	<!-- <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">好友列表</h2> -->
+	<div class="row row-bottom-padded-md" id="FrienfList">
+		{% for friend in friendlist %}
+		<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+			<div class="blog-entry">
+				<a href="{{ url_for('mycenter_app.mycenter',user=friend[1]) }}" class="blog-img"><img src= {{friend[2]}} class="img-responsive"
+						alt="Free HTML5 Bootstrap Template by 狮王素材"></a>
+				<!--头像图片-->
+				<div class="desc">
+					<h3><a href="{{ url_for('mycenter_app.mycenter',user=friend[1]) }}">{{friend[1]}}</a></h3>
+					<span><small>{{friend[3] or '这个人很懒，什么也不想说...'}}</small></span>
+					<!--好友个性签名-->
+					<!-- <p>His latest words</p> -->
+					<!-- 和该好友最后一次发的话 -->
+					<a href="{{ url_for('mycenter_app.mycenter',user=friend[1]) }}" class="lead">friend's center<i class="icon-arrow-right3"></i></a>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+
+	</div>
+</div>
+<div class="fh5co-narrow-content">
+	<a class="center btn btn-primary btn-learn" href="#FrienfList">好友列表</a>
+	<a class="btn btn-primary btn-learn" href="#Recommendation">可能想认识的人</a>
+	<!-- <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">可能想认识的人</h2> -->
+	<div class="row row-bottom-padded-md" id="Recommendation">
+		{% for potenial_friend in potenialfriendlist %}
+		<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+			<a href="{{ url_for('mycenter_app.mycenter',user=potenial_friend[1]) }}" class="work image-popup" style="background-image: url('{{ potenial_friend[2] }}');">
+				<div class="desc">
+					<h3>{{potenial_friend[1]}}</h3>
+					<span>{{potenial_friend[3] or '这个人很懒，什么也不想说...'}}</span>
+					<!--介绍-->
+				</div>
+			</a>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+</div>
+{% endblock %}

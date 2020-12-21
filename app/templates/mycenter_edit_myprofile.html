@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} 编辑 {% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block page_header %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<div id="fh5co-main">
+	<a href="mycenter"><i class="fh5co-pos-icon .icon-arrow-back"></i></a>
+	<!--个人简介-->
+	<div class="fh5co-narrow-content">
+		<div class="row  animate-box">
+			<h2 class="fh5co-heading col-md-2 col-md-offset-0 " data-animate-effect="fadeInLeft">个人简介修改</h2>
+		</div>
+		<form method="post">
+			{{form.csrf_token}}
+			<div class="form-group fh5co-feature" data-animate-effect="fadeInLeft">
+				{{ form.introduction.label }}
+				{{ form.introduction(class="form-control") }}
+			</div>
+			{{form.submit(class='btn btn-primary')}}
+		</form>
+	</div>
+</div>
+{% endblock %}

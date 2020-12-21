@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+
+{% block title %} 编辑 {% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block page_header %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<div id="fh5co-main">
+	<a href="mycenter"><i class="fh5co-pos-icon .icon-arrow-back"></i></a>
+
+<!--个人信息-->
+<div class="fh5co-narrow-content">
+		<div class="row  animate-box">
+			<h2 class="fh5co-heading col-md-2 col-md-offset-0 " data-animate-effect="fadeInLeft">个人信息</h2>
+		</div>
+		<div class="form-group fh5co-feature" data-animate-effect="fadeInLeft">
+			<form method="post" id="gender">
+				{{form.csrf_token}}
+				<div class="row">
+					<div class="col-md-6">
+						<div class="fh5co-text">
+							<h3> 性别：</h3>
+							{{ form.gender}}
+						</div>
+					</div>
+					<div class="col-md-6">
+						{{ form.submit_gender(value="修改性别") }}
+					</div>
+				</div>
+			</form>
+		</div>
+	
+		<div class="form-group fh5co-feature" data-animate-effect="fadeInLeft">
+			<form method="post" id="age">
+				<div class="row">
+				{{form.csrf_token}}
+					<div class="col-md-6">
+						<div class="fh5co-text">
+							<h3> 年龄：</h3>
+							{{ form.age(class="form-control") }}
+						</div>
+					</div>
+					<div class="col-md-6">
+						{{ form.submit_age(value="修改年龄") }}
+					</div>
+				</div>
+			</form>
+		</div>
+	
+		<div class="form-group fh5co-feature" data-animate-effect="fadeInLeft">
+			<form method="post" id="agesub">
+
+			<div class="row">
+					{{form.csrf_token}}
+					<div class="col-md-6">
+						<div class="fh5co-text">
+							<h3> 年龄：</h3>
+							{{ form.agesub(class="form-control") }}
+						</div>
+					</div>
+					<div class="col-md-6">
+						{{ form.submit_agesub(value="修改年龄描述" ) }}
+					</div>
+			</div>
+			</form>
+		</div>
+		<div class="form-group fh5co-feature" data-animate-effect="fadeInLeft">
+			<form method="post" id="major">
+			<div class="row">
+					{{form.csrf_token}}
+					<div class="col-md-6">
+						<div class="fh5co-text">
+							<h3>专业：</h3>
+							{{ form.major(class="form-control") }}
+						</div>
+					</div>
+					<div class="col-md-6">
+						{{ form.submit_major(value="修改专业") }}
+					</div>
+			</div>
+			</form>
+		</div>
+		<div class="form-group fh5co-feature" data-animate-effect="fadeInLeft">
+			<form method="post" id="majorsub">
+			<div class="row">
+					{{form.csrf_token}}
+					<div class="col-md-6">
+						<div class="fh5co-text">
+							<h3>专业宣言：</h3>
+							{{ form.majorsub(class="form-control") }}
+						</div>
+					</div>
+					<div class="col-md-6">
+						{{ form.submit_majorsub(value="修改专业宣言" ) }}
+					</div>
+			</div>
+			</form>
+		</div>
+		<div class="form-group fh5co-feature" data-animate-effect="fadeInLeft">
+			<form method="post" id="hometown">
+			<div class="row">
+					{{form.csrf_token}}
+					<div class="col-md-6">
+						<div class="fh5co-text">
+							<h3>家乡：</h3>
+							{{ form.hometown(class="form-control") }}
+						</div>
+					</div>
+					<div class="col-md-6">
+						{{ form.submit_hometown(value="修改家乡") }}
+					</div>
+			</div>
+			</form>
+		</div>
+		<div class="form-group fh5co-feature" data-animate-effect="fadeInLeft">
+			<form method="post" id="hometownsub">
+			<div class="row">
+					{{form.csrf_token}}
+					<div class="col-md-6">
+						<div class="fh5co-text">
+							<h3>家乡故事</h3>
+							{{ form.hometownsub(class="form-control") }}
+						</div>
+					</div>
+					<div class="col-md-6">
+						{{ form.submit_hometownsub(value="修改家乡故事") }}
+					</div>
+			</div>
+			</form>
+		</div>
+</div>
+<div id="back-mycenter">
+	<div class="fh5co-narrow-content">
+		<div class="row">
+			<div class="col-md-3 animate-box" data-animate-effect="fadeInLeft">
+				<p><a href="{{url_for('mycenter_app.mycenter', user=myinfo.name)}}" class="btn btn-primary">返回个人中心</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+{% endblock %}
+

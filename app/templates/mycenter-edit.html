@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+
+{% block title %} 编辑 {% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block page_header %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+
+<div id="fh5co-main">
+
+	<a href="mycenter"><i class="fh5co-pos-icon .icon-arrow-back"></i></a>
+	<div class="row  animate-box">
+		<div class="col-md-3 col-md-offset-1">
+
+			<input class="form-control" type="file" accept="image/gif, image/jpg, image/png" multiple
+				onchange="showImg(this)" />
+
+		</div>
+		<div class="col-md-2 col-md-offset-5">
+			<input type="submit" value="提交" class="btn btn-primary fh5co-heading text-right" />
+			<div class="submitting"></div>
+		</div>
+	</div>
+	<!--个个性名片-->
+	<div class="fh5co-narrow-content">
+		<div class="row  animate-box">
+			<h2 class="fh5co-heading col-md-2 col-md-offset-0 " data-animate-effect="fadeInLeft">个性名片</h2>
+			<input type="submit" value="保存" class="btn btn-primary fh5co-heading col-md-2 col-md-offset-7 text-right" />
+			<div class="submitting"></div>
+
+			<div class="form-group fh5co-feature" data-animate-effect="fadeInLeft">
+				<div class="row">
+					<div class="col-md-10">
+						<div class="fh5co-text">
+							<input type="text" name="gendersub" class="form-control" value="一句放在你的照片墙上的话" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--个人信息-->
+	<div class="fh5co-narrow-content">
+		<div class="row  animate-box">
+			<h2 class="fh5co-heading col-md-2 col-md-offset-0 " data-animate-effect="fadeInLeft">个人信息</h2>
+			<input type="submit" value="保存" class="btn btn-primary fh5co-heading col-md-2 col-md-offset-7 text-right" />
+			<div class="submitting"></div>
+
+			<div class="form-group fh5co-feature" data-animate-effect="fadeInLeft">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="fh5co-text">
+							<h3>性别：</h3>
+							<p> 男性：<input type="radio" checked="checked" name="Sex" value="male" />
+								女性：<input type="radio" name="Sex" value="female" />
+							</p>
+							个性展示板：
+							<input type="text" name="gendersub" class="form-control" value="是一个小可爱呢" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group fh5co-feature" data-animate-effect="fadeInLeft">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="fh5co-text">
+							<h3>年龄：</h3>
+							<input type="text" name="age" class="form-control" value="Age" />
+							个性展示板：
+							<input type="text" name="agesub" class="form-control" value="青春正好！" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="form-group fh5co-feature" data-animate-effect="fadeInLeft">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="fh5co-text">
+							<h3>专业：</h3>
+							<input type="text" name="homesub" class="form-control" value="Profession" />
+							个性展示板：
+							<input type="text" name="homesub" class="form-control" value="计科人，打工魂" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group fh5co-feature" data-animate-effect="fadeInLeft">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="fh5co-text">
+							<h3>家乡：</h3>
+							<select name="province" id="province" class="form-control">
+								<option value="请选择城市">请选择省份</option>
+							</select>
+							<select name="city" id="city" class="form-control">
+								<option value="请选择城市">请选择城市</option>
+							</select>
+
+							个性展示板：
+							<input type="text" name="homesub" class="form-control" value="京畿福地，乐享河北" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!---
+                    <from action="/demo/demo_form.asp">
+                        <h2 class="fh5co-heading animate-box col-md-2 col-md-offset-0 " data-animate-effect="fadeInLeft">个人信息</h2>
+					    <a href="mycenter" class="btn btn-primary fh5co-heading animate-box col-md-2 col-md-offset-7 text-right">保存</a>
+                        <input type="submit" value="保存" onClick="window.location.href=mycenter" class="btn btn-primary fh5co-heading animate-box col-md-2 col-md-offset-7 text-right"/>
+                        <div class="fh5co-feature animate-box" data-animate-effect="fadeInLeft">
+                            <div class="fh5co-text">
+                                <h3>性别：</h3>
+                                <p> 男性：<input type="radio" checked="checked" name="Sex" value="male" />
+                                    女性：<input type="radio" name="Sex" value="female" />
+                                </p>
+                                <h3>个性展示板：<input type="text" name="firstname" value="是一个小可爱呢"></input></h3>
+                            </div>
+                        </div>
+                    
+                    
+                    </form>
+                --->
+
+
+	<!--个人简介-->
+	<div class="fh5co-narrow-content">
+		<div class="row  animate-box">
+			<h2 class="fh5co-heading col-md-2 col-md-offset-0 " data-animate-effect="fadeInLeft">个人简介</h2>
+			<input type="submit" value="保存" class="btn btn-primary fh5co-heading col-md-2 col-md-offset-7 text-right" />
+			<div class="submitting"></div>
+
+			<div class="form-group fh5co-feature" data-animate-effect="fadeInLeft">
+				<div class="row">
+					<div class="col-md-10">
+						<div class="fh5co-text">
+							<input type="text" name="gendersub" class="form-control" value="介绍一下你自己吧" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--Recent Blog-->
+	<div class="fh5co-narrow-content">
+		<div class="row">
+			<h2 class=" fh5co-heading animate-box col-md-2 col-md-offset-0 " data-animate-effect="fadeInLeft">我的博客</h2>
+			<a href="myblog"
+				class="btn btn-primary fh5co-heading animate-box col-md-2 col-md-offset-7 text-right">管理博客</a>
+		</div>
+		<div class="row row-bottom-padded-md">
+			<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+				<div class="blog-entry">
+
+					<div class="desc">
+						<h3><a href="#">Inspirational Website</a></h3>
+						<span><small>by Admin </small> / <small> Web Design </small> / <small> <i
+									class="icon-comment"></i> 14</small></span>
+						<p>Design must be functional and functionality must be translated into visual aesthetics</p>
+						<a href="#" class="lead">Read More <i class="icon-arrow-right3"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+				<div class="blog-entry">
+
+					<div class="desc">
+						<h3><a href="#">Inspirational Website</a></h3>
+						<span><small>by Admin </small> / <small> Web Design </small> / <small> <i
+									class="icon-comment"></i> 14</small></span>
+						<p>Design must be functional and functionality must be translated into visual aesthetics</p>
+						<a href="#" class="lead">Read More <i class="icon-arrow-right3"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+				<div class="blog-entry">
+
+					<div class="desc">
+						<h3><a href="#">Inspirational Website</a></h3>
+						<span><small>by Admin </small> / <small> Web Design </small> / <small> <i
+									class="icon-comment"></i> 14</small></span>
+						<p>Design must be functional and functionality must be translated into visual aesthetics</p>
+						<a href="#" class="lead">Read More <i class="icon-arrow-right3"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+				<div class="blog-entry">
+
+					<div class="desc">
+						<h3><a href="#">Inspirational Website</a></h3>
+						<span><small>by Admin </small> / <small> Web Design </small> / <small> <i
+									class="icon-comment"></i> 14</small></span>
+						<p>Design must be functional and functionality must be translated into visual aesthetics</p>
+						<a href="#" class="lead">Read More <i class="icon-arrow-right3"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %} 主页 {% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block page_header %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<div id="fh5co-main">
+    <aside id="fh5co-hero" class="js-fullheight">
+        <div class="flexslider js-fullheight">
+            <ul class="slides">
+                <li style="background-image: url(../static/images/login_1.jpg);">
+                    <div class="overlay"></div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
+                                <div class="slider-text-inner">
+                                    <h1><strong>仰</strong> <strong>望</strong> <strong>心</strong> <strong>空</strong></h1>
+                                    <h1> Look Up With Empty Heart </h1>
+                                    <h2>Website Made by <a href="#" target="_blank"><strong>计科导14组</strong></a></h2>
+                                    <p>
+                                        {% if current_user.is_anonymous %}
+                                        <a class="btn btn-primary btn-demo popup-vimeo" href="{{url_for('account.login')}}">
+                                            <i class="icon-monitor"></i> 登录 </a>
+                                        <a class="btn btn-primary btn-learn" href="{{url_for('account.register')}}">注册
+                                            <i class="icon-arrow-right3"></i></a>
+                                        {% else %}
+                                        <a class="btn btn-primary btn-demo popup-vimeo" href="{{url_for('mycenter_app.mycenter',user=current_user.username)}}">
+                                            <i class="icon-monitor"></i> 个人中心 </a>
+                                        <a class="btn btn-primary btn-learn" href="{{url_for('account.logout')}}">注销
+                                            <i class="icon-arrow-right3"></i></a>
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li style="background-image: url(../static/images/login_2.jpg);">
+                    <div class="overlay"></div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
+                                <div class="slider-text-inner">
+                                    <h1><strong>仰</strong> <strong>望</strong> <strong>心</strong> <strong>空</strong></h1>
+                                    <h1> Look Up With Empty Heart </h1>
+                                    <h2>Website Made by <a href="#" target="_blank"><strong>计科导14组</strong></a></h2>
+                                    <p>
+                                        {% if current_user.is_anonymous %}
+                                        <a class="btn btn-primary btn-demo popup-vimeo" href="{{url_for('account.login')}}">
+                                            <i class="icon-monitor"></i> 登陆 </a>
+                                        <a class="btn btn-primary btn-learn" href="{{url_for('account.register')}}">注册
+                                            <i class="icon-arrow-right3"></i></a>
+                                        {% else %}
+                                        <a class="btn btn-primary btn-demo popup-vimeo" href="{{url_for('mycenter_app.mycenter',user=current_user.username)}}">
+                                            <i class="icon-monitor"></i> 个人中心 </a>
+                                        <a class="btn btn-primary btn-learn" href="{{url_for('account.logout')}}">注销
+                                            <i class="icon-arrow-right3"></i></a>
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li style="background-image: url(../static/images/login_3.jpg);">
+                    <div class="overlay"></div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
+                                <div class="slider-text-inner">
+                                    <h1><strong>仰</strong> <strong>望</strong> <strong>心</strong> <strong>空</strong></h1>
+                                    <h1> Look Up With Empty Heart </h1>
+                                    <h2>Website Made by <a href="#" target="_blank"><strong>计科导14组</strong></a></h2>
+                                    <p>
+                                        {% if current_user.is_anonymous %}
+                                        <a class="btn btn-primary btn-demo popup-vimeo" href="{{url_for('account.login')}}">
+                                            <i class="icon-monitor"></i> 登陆 </a>
+                                        <a class="btn btn-primary btn-learn" href="{{url_for('account.register')}}">注册
+                                            <i class="icon-arrow-right3"></i></a>
+                                        {% else %}
+                                        <a class="btn btn-primary btn-demo popup-vimeo" href="{{url_for('mycenter_app.mycenter',user=current_user.username)}}">
+                                            <i class="icon-monitor"></i> 个人中心 </a>
+                                        <a class="btn btn-primary btn-learn" href="{{url_for('account.logout')}}">注销
+                                            <i class="icon-arrow-right3"></i></a>
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </aside>
+</div>
+{% endblock %}

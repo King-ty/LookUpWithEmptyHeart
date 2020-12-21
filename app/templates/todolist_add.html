@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} 添加待办 {% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block page_header %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<div id="fh5co-main">
+	<div class="fh5co-narrow-content">
+		<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">todolist</h2>
+		<form method="POST">
+			{{form.csrf_token}}
+			<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+				{{form.title.label}}
+				{{form.title}}
+				{{form.event.label}}
+				{{form.event}}
+			</div>
+			<div class="col-md-4 animate-box" data-animate-effect="fadeInLeft">
+				{{form.year.label}}
+				{{form.year}}
+				{{form.month.label}}
+				{{form.month}}
+				{{form.day.label}}
+				{{form.day}}
+				<br>
+				{{form.submit}}
+			</div>
+		</form>
+
+	</div>
+</div>
+
+</html>
+
+
+{% endblock %}

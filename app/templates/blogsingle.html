@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block title %} 我的博客 {% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block page_header %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+
+<div id="fh5co-main">
+	<!-- <div class="fh5co-narrow-content">
+        <div class="row">
+            <div class="col-md-12 animate-box fadeInLeft animated" data-animate-effect="fadeInLeft">
+                <h1 class="fh5co-heading-colored">{{head}}</h1>
+            </div>
+            <div class="col-md-12 animate-box fadeInLeft animated" data-animate-effect="fadeInLeft">
+                <p> 作者:{{ author }}  <strong> / </strong> 被赞数:{{likenum}}</p>
+                {% if openstate %}
+                <p> (已同步至论坛) </p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row animate-box fadeInLeft animated">
+            <div class="col-md-3">
+                {% if single_bloginfo.img1 %}
+                <a href="/myblog/{{single_bloginfo.user_id}}/{{single_bloginfo.id}}" class="blog-img">
+                    <img src="{{url_for('static',filename=single_bloginfo.img1)}}" class="img-responsive"/>
+                </a>
+                {% endif %}
+            </div>
+            <div class="col-md-3">
+                {% if single_bloginfo.img2 %}
+                <a href="/myblog/{{single_bloginfo.user_id}}/{{single_bloginfo.id}}" class="blog-img">
+                    <img src="{{url_for('static',filename=single_bloginfo.img2)}}" class="img-responsive"/>
+                </a>
+                {% endif %}
+            </div>
+            <div class="col-md-3">
+                {% if single_bloginfo.img3 %}
+                <a href="/myblog/{{single_bloginfo.user_id}}/{{single_bloginfo.id}}" class="blog-img">
+                    <img src="{{url_for('static',filename=single_bloginfo.img3)}}" class="img-responsive"/>
+                </a>
+                {% endif %}
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+                    <p class="fh5co-lead">{{body}}</p>
+            </div>
+        </div>
+    </div> -->
+
+	<div class="fh5co-narrow-content">
+        <div class="row">
+            <div class="col-md-12 animate-box fadeInLeft animated" data-animate-effect="fadeInLeft">
+                <h1 class="fh5co-heading-colored">{{head}}</h1>
+            </div>
+            <div class="col-md-12 animate-box fadeInLeft animated" data-animate-effect="fadeInLeft">
+                <p> 作者:{{ author }} <strong> / </strong> 被赞数:{{likenum}}</p>
+                {% if openstate %}
+                <p> (已同步至论坛) </p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 animate-box fadeInLeft animated data-animate-effect="fadeInLeft">
+                {% if single_bloginfo.img1 %}
+                <a href="/myblog/{{single_bloginfo.user_id}}/{{single_bloginfo.id}}" class="blog-img">
+                    <img src="{{url_for('static',filename=single_bloginfo.img1)}}" class="img-responsive" />
+                </a>
+                {% endif %}
+            </div>
+            <div class="col-md-3  animate-box fadeInLeft animated data-animate-effect="fadeInLeft">
+                {% if single_bloginfo.img2 %}
+                <a href="/myblog/{{single_bloginfo.user_id}}/{{single_bloginfo.id}}" class="blog-img">
+                    <img src="{{url_for('static',filename=single_bloginfo.img2)}}" class="img-responsive" />
+                </a>
+                {% endif %}
+            </div>
+            <div class="col-md-3  animate-box fadeInLeft animated data-animate-effect="fadeInLeft">
+                {% if single_bloginfo.img3 %}
+                <a href="/myblog/{{single_bloginfo.user_id}}/{{single_bloginfo.id}}" class="blog-img">
+                    <img src="{{url_for('static',filename=single_bloginfo.img3)}}" class="img-responsive" />
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-11 animate-box" data-animate-effect="fadeInLeft">
+                <div class="widget col-md-12">
+                    <ul class="list-unstyled">
+                        <li class="media">
+                            <div class="media-body ml-4">
+                                <p class="mt-2" style="white-space:pre-wrap">{{body}}</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+	<div id="back-mycenter">
+		<div class="fh5co-narrow-content">
+			<div class="row">
+                    <div class="col-md-3 animate-box" data-animate-effect="fadeInLeft">
+                        <p><a href="/myblog/{{userid}}" class="btn btn-primary">返回博客列表</a></p>
+                    </div>
+                    <form method="post">
+                        {% if isowner %}
+                            <div class="col-md-3  col-md-offset-6 animate-box" data-animate-effect="fadeInLeft">
+                                <p><input id="deleteit" type="submit" class="btn btn-primary" value="删除此博客" name="Action"></input></p>
+                            </div>
+                        {% else %}
+                            <div class="col-md-3  col-md-offset-6 animate-box" data-animate-effect="fadeInLeft">
+                                <p><input id="likeit" type="submit" class="btn btn-primary" value="赞❤" name="Action"/></p>
+                            </div>
+                        {% endif %}
+                    </form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+

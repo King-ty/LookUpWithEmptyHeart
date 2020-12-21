@@ -1,0 +1,315 @@
+{% extends 'base.html' %}
+
+{% block title %} 登录 {% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block page_header %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<aside id="fh5co-hero" class="js-fullheight">
+	<div class="flexslider js-fullheight">
+		<ul class="slides">
+			<li style="background-image: url(../static/images/login_1.jpg);">
+				<div class="overlay"></div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
+							<div class="slider-text-inner">
+								<h1><strong>仰</strong> <strong>望</strong> <strong>心</strong> <strong>空</strong></h1>
+								<h2>Website Made by <a href="#" target="_blank"><strong>计科导14组</strong></a></h2>
+								<p>
+									<a class="btn btn-primary btn-demo popup-vimeo" href="login">
+										<i class="icon-monitor"></i> 登陆 </a>
+									<a class="btn btn-primary btn-learn" href="#signup">注册
+										<i class="icon-arrow-right3"></i></a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li style="background-image: url(../static/images/login_2.jpg);">
+				<div class="overlay"></div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
+							<div class="slider-text-inner">
+								<h1><strong>仰</strong> <strong>望</strong> <strong>心</strong> <strong>空</strong></h1>
+								<h2>Website Made by <a href="#" target="_blank"><strong>计科导14组</strong></a></h2>
+								<p>
+									<a class="btn btn-primary btn-demo popup-vimeo" href="login">
+										<i class="icon-monitor"></i> 登陆 </a>
+									<a class="btn btn-primary btn-learn" href="#signup">注册
+										<i class="icon-arrow-right3"></i></a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li style="background-image: url(../static/images/login_3.jpg);">
+				<div class="overlay"></div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
+							<div class="slider-text-inner">
+								<h1><strong>仰</strong> <strong>望</strong> <strong>心</strong> <strong>空</strong></h1>
+								<h2>Website Made by <a href="#" target="_blank"><strong>计科导14组</strong></a></h2>
+								<p>
+									<a class="btn btn-primary btn-demo popup-vimeo" href="login">
+										<i class="icon-monitor"></i> 登 陆 </a>
+									<a class="btn btn-primary btn-learn" href="#signup">注 册
+										<i class="icon-arrow-right3"></i></a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</aside>
+
+<div class="fh5co-narrow-content">
+	<div class="row">
+		<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+			<h1 class="fh5co-heading-colored"><a id="signup">Sign Up</a></h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+			<div class="row ">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="form-group">
+						<input type="text" name="name" id="name" class="form-control" placeholder="姓名">
+					</div>
+					<div class="form-group">
+						<input type="email" name="email" id="email" class="form-control" placeholder="邮箱">
+					</div>
+					<div class="form-group">
+						<select name="gender" id="gender" class="form-control selectpicker" placeholder="性别"
+							title="请选择性别" data-size="3">
+							<option>男</option>
+							<option>女</option>
+							<option>其他</option>
+						</select>
+					</div>
+					<!-- 
+                                <div class="form-group">
+                                    <select name="faculty" id="faculty" class="form-control selectpicker" placeholder="学院" title="请选择所在学院" data-live-search="true" data-size="34">
+										<option>建筑与城市规划学院</option>
+										<option>机械与能源工程学院</option>
+										<option>经济与管理学院</option>
+										<option>环境科学与工程学院</option>
+										<option>材料科学与工程学院</option>
+										<option>电子与信息工程学院</option>
+										<option>人文学院</option>
+										<option>外国语学院</option>
+										<option>法学院</option>
+										<option>马克思主义学院</option>
+										<option>海洋与地球科学学院</option>
+										<option>航空航天与力学学院</option>
+										<option>力学实验中心</option>
+										<option>物理科学与工程学院</option>
+										<option>化学科学与工程学院</option>
+										<option>汽车学院</option>
+										<option>交通运输工程学院</option>
+										<option>软件学院</option>
+										<option>测绘与地理信息学院</option>
+										<option>医学院</option>
+										<option>设计创意学院</option>
+										<option>口腔医学院</option>
+										<option>艺术与传媒学院</option>
+										<option>中德工程学院</option>
+									</select>
+								</div>
+								 -->
+					<div class="form-group">
+						<select name="major" id="major" class="form-control selectpicker" placeholder="专业"
+							title="请选择所在学院/专业" data-live-search="true">
+							<optgroup label="建筑与城市规划学院" data-subtext="">
+								<option>建筑系</option>
+								<option>城市规划系</option>
+								<option>景观学系</option>
+							</optgroup>
+							<optgroup label="土木工程学院" data-subtext="">
+								<option>建筑工程系</option>
+								<option>桥梁工程系</option>
+								<option>地下建筑与工程系</option>
+								<option>结构防灾减灾工程系</option>
+								<option>水利工程系</option>
+							</optgroup>
+							<optgroup label="机械与能源工程学院" data-subtext="">
+								<option>建筑环境与能源应用工程</option>
+								<option>机械设计制造及其自动化</option>
+								<option>工业工程</option>
+								<option>智能制造工程</option>
+								<option>能源与动力工程</option>
+							</optgroup>
+							<optgroup label="经济与管理学院" data-subtext="">
+								<option>工程管理</option>
+								<option>信息管理与信息系统</option>
+								<option>物流管理</option>
+								<option>市场营销</option>
+								<option>会计学</option>
+								<option>金融学</option>
+								<option>国际经济与贸易</option>
+								<option>行政管理</option>
+							</optgroup>
+							<optgroup label="环境科学与工程学院" data-subtext="">
+								<option>环境工程</option>
+								<option>给排水科学与工程</option>
+								<option>环境科学</option>
+							</optgroup>
+							<optgroup label="材料科学与工程学院" data-subtext="">
+								<option>新能源材料与器件</option>
+								<option>材料科学与工程</option>
+							</optgroup>
+							<optgroup label="电子与信息工程学院" data-subtext="">
+								<option>电气工程系</option>
+								<option>电子科学与技术系</option>
+								<option>信息与通信工程系</option>
+								<option>控制科学与工程系</option>
+								<option>计算机科学与技术系</option>
+							</optgroup>
+							<optgroup label="人文学院" data-subtext="">
+								<option>哲学</option>
+								<option>文化产业管理</option>
+								<option>汉语言文学</option>
+							</optgroup>
+							<optgroup label="外国语学院" data-subtext="">
+								<option>英语系</option>
+								<option>德语系</option>
+							</optgroup>
+							<optgroup label="法学院" data-subtext="">
+								<option>法学</option>
+							</optgroup>
+							<optgroup label="马克思主义学院" data-subtext="">
+								<option>C</option>
+								<option>D</option>
+							</optgroup>
+							<optgroup label="政治与国际关系学院" data-subtext="">
+								<option>政治学与行政学</option>
+								<option>社会学</option>
+							</optgroup>
+							<optgroup label="海洋与地球科学学院" data-subtext="">
+								<option>海洋科学</option>
+								<option>地球物理学</option>
+								<option>海洋技术</option>
+							</optgroup>
+							<optgroup label="航空航天与力学学院" data-subtext="">
+								<option>C</option>
+								<option>D</option>
+							</optgroup>
+							<optgroup label="物理科学与工程学院" data-subtext="">
+								<option>C</option>
+								<option>D</option>
+							</optgroup>
+							<optgroup label="化学科学与工程学院" data-subtext="">
+								<option>C</option>
+								<option>D</option>
+							</optgroup>
+							<optgroup label="汽车学院" data-subtext="">
+								<option>车辆工程（汽车）</option>
+							</optgroup>
+							<optgroup label="交通运输工程学院" data-subtext="">
+								<option>交通工程</option>
+								<option>交通运输</option>
+							</optgroup>
+							<optgroup label="软件学院" data-subtext="">
+								<option>软件工程</option>
+							</optgroup>
+							<optgroup label="测绘与地理信息学院" data-subtext="">
+								<option>测绘工程</option>
+							</optgroup>
+							<optgroup label="医学院" data-subtext="">
+								<option>临床医学</option>
+							</optgroup>
+							<optgroup label="口腔医学院" data-subtext="">
+								<option>口腔医学</option>
+							</optgroup>
+							<optgroup label="设计创意学院" data-subtext="">
+								<option>C</option>
+								<option>D</option>
+							</optgroup>
+							<optgroup label="口腔医学院" data-subtext="">
+								<option>C</option>
+								<option>D</option>
+							</optgroup>
+							<optgroup label="艺术与传媒学院" data-subtext="">
+								<option>C</option>
+								<option>D</option>
+							</optgroup>
+							<optgroup label="中德工程学院" data-subtext="">
+								<option>C</option>
+								<option>D</option>
+							</optgroup>
+						</select>
+					</div>
+					<div class="form-group">
+						<select name="hometown" id="hometown" class="form-control selectpicker" placeholder="家乡"
+							title="请选择家乡" data-live-search="true" data-size="34">
+							<option>河北省</option>
+							<option>山西省</option>
+							<option>辽宁省</option>
+							<option>吉林省</option>
+							<option>黑龙江省</option>
+							<option>江苏省</option>
+							<option>浙江省</option>
+							<option>安徽省</option>
+							<option>福建省</option>
+							<option>江西省</option>
+							<option>山东省</option>
+							<option>河南省</option>
+							<option>湖北省</option>
+							<option>湖南省</option>
+							<option>广东省</option>
+							<option>海南省</option>
+							<option>四川省</option>
+							<option>贵州省</option>
+							<option>云南省</option>
+							<option>陕西省</option>
+							<option>甘肃省</option>
+							<option>青海省</option>
+							<option>台湾省</option>
+							<option>内蒙古自治区</option>
+							<option>广西壮族自治区</option>
+							<option>西藏自治区</option>
+							<option>宁夏回族自治区</option>
+							<option>新疆维吾尔自治区</option>
+							<option>北京市</option>
+							<option>天津市</option>
+							<option>上海市</option>
+							<option>重庆市</option>
+							<option>香港特别行政区</option>
+							<option>澳门特别行政区</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<input type="date" name="birthday" id="birthday" class="form-control" placeholder="生日">
+					</div>
+					<div class="form-group">
+						<input type="password" name="password1" id="password1" class="form-control" placeholder="密码">
+					</div>
+					<div class="form-group">
+						<input type="password" name="password2" id="password2" class="form-control"
+							placeholder="再次输入密码">
+					</div>
+					<div class="form-group">
+						<input type="submit" class="btn btn-primary btn-md" value="Sign Up">
+						<div class="submitting"></div>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

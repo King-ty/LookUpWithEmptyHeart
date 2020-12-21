@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %} 发帖 {% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block page_header %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<div id="fh5co-main">
+	<form method="post">
+		<div class="fh5co-more-contact">
+			<div class="fh5co-narrow-content">
+				<div class="row">
+					<div class="col-md-6">
+						<h3 class="fh5co-heading-colored">发表新帖</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						{{ form.csrf_token }}
+						<div class="form-group">
+							{{ form.topic.label }}
+							<div id="topic">
+								{{ form.topic(class = 'form-control', placeholder = '在这里输入帖子主题') }}
+							</div>
+						</div>
+						<div class="form-group">
+							{{ form.content.label }}
+							<div id="content">
+								{{ form.content(class = 'form-control', placeholder = '在这里输入帖子内容，不超过10000个字符') }}
+								<!-- <span><var id="iwcnt">0</var>/<var id="iwmax">10000</var></span> -->
+							</div>
+						</div>
+						<div class="text-center">
+							{{ form.submit(class = 'btn btn-primary') }}
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 模态框 -->
+		<div class="modal fade" id="PublishModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">发布讨论</h4>
+					</div>
+					<div class="modal-body">是否确认发布？</div>
+					<div class="modal-footer">
+						{{ form.submit(value = "确认",class="btn btn-primary") }}
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %} 主页 {% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block page_header %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<div id="fh5co-main">
+	<a href="myblog"><i class="fh5co-pos-icon .icon-arrow-back"></i></a>
+	<form method="post" enctype="multipart/form-data">
+		<div class="fh5co-narrow-content">
+			<div class="form-group fh5co-feature" data-animate-effect="fadeInLeft">
+				<!--题目-->
+				<div class="row">
+					<div class="fh5co-text col-md-8">
+						{{blogform.csrf_token}}
+						<div class="form-group fh5co-feature" data-animate-effect="fadeInLeft">
+							{{blogform.head.label}}
+							{{blogform.head(class="form-control")}}
+						</div>
+					</div>
+				</div>
+				<!--修改图片-->
+				<h1 class="fh5co-heading-colored animate-box col-md-offset-1" data-animate-effect="fadeInLeft">修改图片</h1>
+				<div class="row  animate-box">
+					<div class="col-md-3 col-md-offset-1">
+						
+							{{ blogform.csrf_token }}
+							<div class="form-group">
+								{{ blogform.img1.label }}
+								{{blogform.img1(class='form-control')}}
+								{{ blogform.img2.label }}
+								{{blogform.img2(class='form-control')}}
+								{{ blogform.img3.label }}
+								{{blogform.img3(class='form-control')}}
+
+							</div>
+							
+						<!--form method=post enctype=multipart/form-data>
+							<input type=file name=file1 class="form-group">
+							<input type=file name=file2 class="form-group">
+							<input type=file name=file3 class="form-group">
+							<input type=submit value=上传 class="form-group">
+						</form-->
+					</div>
+				</div>
+				<!-- 内容 -->
+				<div class="row">
+					<div class="fh5co-text col-md-10">
+						{{blogform.csrf_token}}
+						<div class="form-group fh5co-feature" data-animate-effect="fadeInLeft">
+							{{blogform.body.label}}
+							{{blogform.body}}
+							{{blogform.openstate}}
+							{{blogform.openstate.label}}
+						</div>
+					</div>
+				</div>
+				<!--提交按钮-->
+				<div class="row">
+					<div class="col-md-2 col-md-offset-10">
+						{{blogform.csrf_token}}
+						<div class="form-group fh5co-feature" data-animate-effect="fadeInLeft">
+							{{blogform.submit}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+
+	<div class="fh5co-narrow-content">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+				<p><a href="{{url_for('myblog.myblog', userid=current_user.get_id())}}"
+						class="btn btn-primary">返回我的博客列表</a></p>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}

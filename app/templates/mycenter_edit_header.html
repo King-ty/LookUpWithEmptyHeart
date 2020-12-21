@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %} 登录 {% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block page_header %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<div id="fh5co-main">
+	<div class="fh5co-narrow-content row">
+
+		<h1 class="fh5co-heading-colored animate-box col-md-offset-1" data-animate-effect="fadeInLeft">修改头像</h1>
+		<div class="row animate-box">
+
+			{% if user.header%}
+			<img class="img-responsive col-md-3 col-md-offset-4" src="{{ url_for('static',filename=user.header) }}">
+			{%else%}
+			<img class="img-responsive col-md-3 col-md-offset-4" src="../static/images/header_start.jpg" />
+			{% endif %}
+		</div>
+
+		<div class="row  animate-box">
+			<div class="col-md-3 col-md-offset-1">
+				<form method="post" enctype="multipart/form-data">
+					{{ form.csrf_token }}
+					<div class="form-group">
+						{{ form.header.label }}
+						{{form.header(class='form-control')}}
+					</div>
+
+					{{ form.submit(class='btn btn-primary') }}<br>
+				</form>
+				<!--form method=post enctype=multipart/form-data>
+					<input type=file name=file1 class="form-group">
+					<input type=file name=file2 class="form-group">
+					<input type=file name=file3 class="form-group">
+					<input type=submit value=上传 class="form-group">
+				</form-->
+			</div>
+		</div>
+
+	</div>
+</div>
+{% endblock %}

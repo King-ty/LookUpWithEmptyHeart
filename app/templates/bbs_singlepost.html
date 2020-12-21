@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block title %} 帖子详情 {% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block page_header %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<div id="fh5co-main">
+    <div class="fh5co-narrow-content">
+		<!-- <div class="container"> -->
+			<div class="row justify-content-center" style="word-break: break-all">
+				<div class="widget col-md-12">
+					<!-- <div class="container"> -->
+						<div class="row d-flex justify-content-between">
+							<div>
+								<h3>{{ post.head }}</h3>
+							</div>
+						</div>
+					<!-- </div> -->
+					<ul class="list-unstyled">
+						<hr>
+						<li class="media">
+							<div>
+								{%if center_usercenterinfo.header%}
+								<div class="chat-header clearfix">
+									<a href="{{url_for('mycenter_app.mycenter',user=post.username)}}" class="rounded"><img src="{{url_for('static',filename=center_usercenterinfo.header)}}" width="50" height="50" /></a>
+								</div>
+								{%else%}
+								<div class="chat-header clearfix">
+									<a href="{{url_for('mycenter_app.mycenter',user=post.username)}}" class="blog-img"><img src="{{url_for('static',filename='images/header_start.jpg')}}"  width="50" height="50" /></a><!--../static/images/header_start.jpg-->
+								</div>
+								{%endif%}
+								<!-- <img class="rounded" src={#{url_for('static',filename=('user/Avater/'+get_avater(post.UserIdentity, post.user_id)))}#} 
+								width=128 height=128 alt="Generic placeholder image"> -->
+							</div>
+							<div class="media-body ml-4">
+								<p>
+									<strong><a href="{{url_for('mycenter_app.mycenter',user=post.username)}}">{{post.username}}</a> (楼主)&nbsp;&nbsp;</strong>
+									<small>{{ post.time.strftime("%Y-%m-%d %H:%M:%S") }}</small>
+								</p>
+								<p class="mt-2" style="white-space:pre-wrap">{{ post.body }}</p>
+							</div>
+						</li>
+						{% if post.user_id == current_user.id %}
+						<div align='middle'>
+							<form method="post">
+								{{ edit_delete_form.csrf_token }}
+								<span class="btn btn-danger mt-1 px-4.5" data-target="#DeleteModal" data-toggle="modal">删除</span>
+								<!-- 模态框 -->
+								<div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header" align='right'>
+												<h4 class="modal-title" id="myModalLabel">删除讨论</h4>
+											</div>
+											<div class="modal-body"><font size="medium">讨论删除后无法恢复，是否确认删除？</font></div>
+											<div class="modal-footer">
+												{{ edit_delete_form.submitDelete(value="确认删除",class ='btn btn-danger') }}
+												<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+						{% endif %}
+						<div align="middle">
+							<a class="btn login-button" onclick="reply_cancel()" href="#Reply">评论</a>
+						</div>
+						{% if comments %}
+						{% for comment in comments %}					
+						<a name="Position{{comment.Position}}"></a>
+						<hr>
+						<li class="media">
+							<div class="media-body ml-4">
+								<small>
+									<strong>{{ comment.position }}楼</strong>
+									{{ comment.time.strftime("%Y-%m-%d %H:%M:%S") }}
+								</small>
+								
+							</div>
+							<div>
+								<!-- <img class="rounded" src={#{url_for('static',filename=('user/Avater/'+get_avater(comment.UserIdentity, comment.User_ID)))}#}  -->
+								<!-- width=128 height=128 alt="Generic placeholder image"> -->
+								<p class="text-left mt-2"><a href="{{url_for('mycenter_app.mycenter',user=comment.username)}}">{{ comment.username }}</a> 
+								{% if comment.user_id == current_user.id %}
+								<span>(我)</span>
+								{% endif %}
+								:
+								</p>
+							</div>
+							<div>
+								<p class="mt-2" style="white-space:pre-wrap">{{ comment.body }}</p>
+							</div>
+						</li>
+						{% endfor %}
+						{% else %}
+						<hr>
+						<div>
+							<p class="mt-2">该讨论帖暂时还没有评论嗷，来抢个沙发吧！</p>
+						</div>
+						{% endif %}
+					</ul>
+				</div>
+				<div class="widget col-md-12">
+					<a name="Reply"></a>
+					<form class="form" method="post">
+						<div id="replied" style="display: none;">
+							<a class="text text-primary" onclick="reply_cancel()" style="cursor:hand"><strong>&times;&nbsp;</strong></a>
+							<span class="text text-primary" id="replied_pos"></span>
+							<p style="white-space:pre-wrap" id="replied_body"></p>
+						</div>
+						{{ comment_form.csrf_token }}
+						<div class="form-group">
+							{{ comment_form.comment.label(class = 'sr-only') }}
+							<div id="icomment">
+								{{ comment_form.comment(class = 'form-control', placeholder = '在这里输入评论，不得超过600个字符') }}
+								<span><var id="iwcnt">0</var>/<var id="iwmax">600</var></span>
+							</div>
+							{{ comment_form.comment_replied_pos }}
+						</div>
+						<div class="text-center">
+							{{ comment_form.submitComment(class = 'btn btn-primary') }}
+						</div>
+					</form>
+				</div>
+			</div>
+		<!-- </div> -->
+	</div>
+</div>
+
+{% endblock %}

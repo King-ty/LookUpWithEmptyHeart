@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+
+{% block title %} 个人中心 {% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block page_header %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+
+<div id="fh5co-main">
+	<!--自动切换图片-->
+	<aside id="fh5co-hero" class="js-fullheight">
+		<div class="flexslider js-fullheight">
+			<ul class="slides">
+				{% for stylestring in stylestrings %}
+				<li style="{{stylestring}}">
+					<div class="overlay"></div>
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
+								<div class="slider-text-inner">
+									<div class="row">
+										<div class="col-md-4 col-md-offset-4">
+											{%if center_usercenterinfo.header%}
+											{% if isowner %}
+											<a href="edit_header" class="blog-img"><img src="../static{{center_usercenterinfo.header}}"
+													class="img-responsive" /></a>
+											{% else %}
+											<a href="#" class="blog-img"><img src="../static{{center_usercenterinfo.header}}" class="img-responsive" /></a>
+											{%endif%}
+											{%else%}
+											{% if isowner %}
+											<a href="edit_header" class="blog-img"><img src="../static/images/header_start.jpg" class="img-responsive" /></a>
+											{% else %}
+											<a href="#" class="blog-img"><img src="../static/images/header_start.jpg" class="img-responsive" /></a>
+											{% endif %}
+											{%endif%}
+										</div>
+									</div>
+									<form method="post">
+										<h1><strong>{{center_usercenterinfo.name}}</strong> 的个人中心</h1>
+										<h2>快来了解我吧</h2>
+										<p>
+											{% if isowner %}
+											<a class="btn btn-primary btn-demo popup-vimeo" href="/mycenter/edit_imagewall"> 上传照片</a>
+											{% else %}
+												{% if isfocus %}
+												<input id="focus" type="submit" class="btn btn-primary btn-demo popup-vimeo" value="取关TA" name="Action"/>
+												{% else %}
+												<input id="focus" type="submit" class="btn btn-primary btn-demo popup-vimeo" value="关注TA" name="Action"/>
+												{% endif %}
+											{% endif %}
+												<input id="likeit" type="submit" class="btn btn-primary btn-learn" value="赞❤" name="Action"/>
+										</p>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				{% endfor%}
+
+			</ul>
+		</div>
+	</aside>
+	<!--个人信息-->
+	<div class="fh5co-narrow-content">
+		<div class="row">
+			<h2 class=" fh5co-heading animate-box col-md-2 col-md-offset-0 " data-animate-effect="fadeInLeft">个人信息</h2>
+			{% if isowner %}
+			<a href="/mycenter/edit_myinfo"
+				class="btn btn-primary fh5co-heading animate-box col-md-2 col-md-offset-7 text-right">编辑</a>
+			{% endif %}
+			</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="fh5co-feature animate-box" data-animate-effect="fadeInLeft">
+					<div class="fh5co-icon">
+						<i class="icon-head"></i>
+					</div>
+					<div class="fh5co-text">
+						<h3>性别</h3>
+						<p>{% if center_usercenterinfo.gender=='1': %}
+							男
+							{% elif center_usercenterinfo.gender=='2': %}
+							女
+							{% else: %}
+							其他
+							{% endif %}
+						</p>
+						<p>{{center_usercenterinfo.gendersubintro}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="fh5co-feature animate-box" data-animate-effect="fadeInLeft">
+					<div class="fh5co-icon">
+						<i class="icon-watch"></i>
+					</div>
+					<div class="fh5co-text">
+						<h3>年龄</h3>
+						<p>{{center_usercenterinfo.age}}</p>
+						<p>{{center_usercenterinfo.agesubintro}}</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="fh5co-feature animate-box" data-animate-effect="fadeInLeft">
+					<div class="fh5co-icon">
+						<i class="icon-heart"></i>
+					</div>
+					<div class="fh5co-text">
+						<h3>专业</h3>
+						<p>{{center_usercenterinfo.major}}</p>
+						<p>{{center_usercenterinfo.majorsubintro}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="fh5co-feature animate-box" data-animate-effect="fadeInLeft">
+					<div class="fh5co-icon">
+						<i class="icon-chart-area"></i>
+					</div>
+					<div class="fh5co-text">
+						<h3>家乡</h3>
+						<p>{{center_usercenterinfo.hometown}} </p>
+						<p>{{center_usercenterinfo.hometownsubintro}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--个人简介-->
+	<div class="fh5co-narrow-content">
+		<div class="row">
+			<h2 class=" fh5co-heading animate-box col-md-2 col-md-offset-0 " data-animate-effect="fadeInLeft">个人简介</h2>
+			{% if isowner %}
+			<a href="/mycenter/edit_myprofile" class="btn btn-primary fh5co-heading animate-box col-md-2 col-md-offset-7 text-right">编辑</a>
+			{% endif %}
+		</div>
+		<div class="fh5co-feature animate-box" data-animate-effect="fadeInLeft">
+			<p>{{center_usercenterinfo.introduction}}</p>
+		</div>
+	</div>
+	<!--最近博客-->
+	<div class="fh5co-narrow-content">
+		<div class="row">
+			<h2 class=" fh5co-heading animate-box col-md-2 col-md-offset-0 " data-animate-effect="fadeInLeft">最近博客</h2>
+			<a href="{{url_for('myblog.myblog',userid=center_userinfo.id)}}"
+				class="btn btn-primary fh5co-heading animate-box col-md-2 col-md-offset-7 text-right">所有博客</a>
+		</div>
+		<div class="row row-bottom-padded-md">
+		{% for singleblog in center_userblogs  %}
+			<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+				<div class="blog-entry">
+						{% if singleblog.img1 %}
+						<a href="/myblog/{{singleblog.user_id}}/{{singleblog.id}}" class="blog-img">
+							<img src="{{url_for('static',filename=singleblog.img1)}}" class="img-responsive" >
+						</a>
+						{%else%}
+						{%if center_usercenterinfo.header %}
+						<a href="/myblog/{{singleblog.user_id}}/{{singleblog.id}}" class="blog-img">
+							<img src="{{url_for('static',filename= center_usercenterinfo.header)}}" class="img-responsive" >
+						</a>
+						{%else%}
+						<a href="/myblog/{{singleblog.user_id}}/{{singleblog.id}}" class="blog-img">
+							<img src="{{url_for('static',filename='/images/blogimg_start')}}" class="img-responsive" >
+						</a>
+						{%endif%}
+						{% endif %}
+					<div class="desc">
+						<h3><a href="/myblog/{{singleblog.user_id}}/{{singleblog.id}}">{{singleblog.head}}</a></h3>
+						<span><small>BY: {{ center_usercenterinfo.name }} </small> </span>
+						<span><small> 发表时间: {{singleblog.time}} </small></span>
+						<span><small> 获赞数: {{singleblog.likenum}} </small></span>
+						<a href="/myblog/{{singleblog.user_id}}/{{singleblog.id}}" class="lead"> Read More <i class="icon-arrow-right3"></i></a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+
